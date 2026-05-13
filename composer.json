@@ -1,13 +1,13 @@
 {
-  "name": "tales-from-a-dev/tailwind-merge-php",
-  "description": "TailwindMerge for PHP merges multiple Tailwind CSS classes by automatically resolving conflicts between them",
+  "name": "michtio/tailwind-merge-v4",
+  "description": "Drop-in fork of tales-from-a-dev/tailwind-merge-php with a widened psr/simple-cache constraint so it can coexist with Craft Commerce (which transitively pins psr/simple-cache ^1.0 via ibericode/vat).",
   "keywords": [
     "php",
     "tailwindcss",
     "merge",
     "classes"
   ],
-  "homepage": "https://github.com/tales-from-a-dev/tailwind-merge-php",
+  "homepage": "https://github.com/michtio/tailwind-merge-v4",
   "license": "MIT",
   "authors": [
     {
@@ -23,6 +23,9 @@
     "php": ">=8.1",
     "psr/simple-cache": "^1.0 || ^2.0 || ^3.0",
     "symfony/string": "^6.4 || ^7.0 || ^8.0"
+  },
+  "replace": {
+    "tales-from-a-dev/tailwind-merge-php": "self.version"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.89",
