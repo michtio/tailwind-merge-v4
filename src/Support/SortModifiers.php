@@ -33,22 +33,22 @@ final class SortModifiers
      */
     public function sort(array $modifiers): array
     {
-        $sortedModifiers = Collection::make();
+        $sortedModifiers = [];
         $unsortedModifiers = Collection::make();
 
         foreach ($modifiers as $modifier) {
             $isPositionSensitive = '[' === $modifier[0] || isset($this->modifierWeights[$modifier]);
 
             if ($isPositionSensitive) {
-                $sortedModifiers = $sortedModifiers->concat([...$unsortedModifiers->sort()->all(), $modifier]);
+                array_push($sortedModifiers, ...$unsortedModifiers->sort()->all());
+
+                $sortedModifiers[] = $modifier;
                 $unsortedModifiers = Collection::make();
             } else {
                 $unsortedModifiers->add($modifier);
             }
         }
 
-        $sortedModifiers = $sortedModifiers->concat($unsortedModifiers->sort());
-
-        return $sortedModifiers->all();
+        return [...$sortedModifiers, ...$unsortedModifiers->sort()->all()];
     }
 }
